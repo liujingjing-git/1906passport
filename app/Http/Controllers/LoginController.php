@@ -85,4 +85,75 @@ class LoginController extends Controller
 
     }
 
+    /**
+     * 处理API注册
+     */
+    public function apiReg()
+    {
+        $username = request()->input('username');
+        $email = request()->input('email');
+        $mobile = request()->input('mobile');
+        $password = request()->input('password');
+        $password =password_hash($password,PASSWORD_DEFAULT);
+        // echo $password;
+
+        $user_data = [
+            'username' => $username,
+            'email'    => $email,
+            'mobile'   => $mobile,
+            'password' => $password
+        ];
+        
+        $res = UserModel::create($user_data);
+        $data1 = [
+            'error' => 0,
+            'data1' => [
+                'username' => $username,
+                'email'    => $email,
+                'mobile'   => $mobile,
+                'password' => $password
+            ]
+        ];
+        return $data1;
+
+    }
+
+    /**
+     * 处理API登录
+     */
+    public function apiLogin()
+    {
+        $username = request()->input('username');
+        $password = request()->input('password');
+
+        //验证
+        $res = UserModel::where(['username'=>$username])->first();
+        if($res==null)
+        {
+            header("refresh:3,url=reg");
+            echo "该用户不存在 注册后再试...";die; 
+        }
+         //判断密码
+         $password = request()->input('password');
+         if (!Hash::check($password,$res['password'])) {
+             header("refresh:3,url=login");
+             echo "请确认您的密码后再次登录...";die;
+         }
+        
+        $uid = request()->input('id');
+        //生成token   写入cookie
+        $token = Str::random(16);
+        //将token存入redis
+        $user_token_key = 'str:user:token:app'.$uid;
+        Redis::set($user_token_key,$token);
+        
+        $data = [
+            'error' => 0,
+            'data' => [
+                'token' => $token,
+                'uid'   => $uid
+            ]
+        ];
+        return $data;
+    }
 }

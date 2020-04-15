@@ -61,7 +61,7 @@ class GithubController extends Controller
         $u = GithubModel::where(['github_id'=>$userinfo['id']])->first();
         if($u)
         {
-            echo "欢迎回来";echo "<br>";
+            // echo "欢迎回来";echo "<br>";
         }else{
             //写入用户主表
             $u_info = [
@@ -70,7 +70,7 @@ class GithubController extends Controller
             $uid = UserModel::insertGetId($u_info);
             
             //在github表中记录用户信息
-            echo "欢迎新用户";echo "<br>";
+            // echo "欢迎新用户";echo "<br>";
             $user_data = [
                 'uid'       => $uid,
                 'github_id' => $userinfo['id'],

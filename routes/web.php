@@ -15,11 +15,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('github','GithubController@index');
-Route::get('github/callback','GithubController@callback');
-Route::get('github/center','GithubController@center');
+Route::get('github','GithubController@index'); //github视图
+Route::get('github/callback','GithubController@callback'); //github回调
+Route::get('github/center','GithubController@center');  //个人中心
 
 Route::get('reg','LoginController@reg'); //注册视图
 Route::post('regdo','LoginController@regdo'); //执行注册
 Route::get('login','LoginController@login'); //登陆视图
 Route::post('logindo','LoginController@logindo'); //执行登录
+
+
+//处理API登录
+Route::prefix('/api')->group(function(){
+    route::post('/login','LoginController@apiLogin'); 
+    route::post('/reg','LoginController@apiReg'); 
+});
