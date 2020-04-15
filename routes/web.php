@@ -27,6 +27,6 @@ Route::post('logindo','LoginController@logindo'); //执行登录
 
 //处理API登录
 Route::prefix('/api')->group(function(){
-    route::post('/login','LoginController@apiLogin'); 
-    route::post('/reg','LoginController@apiReg'); 
+    Route::post('/login','LoginController@apiLogin'); 
+    Route::post('/reg','LoginController@apiReg'); 
 });
