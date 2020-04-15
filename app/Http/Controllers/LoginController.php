@@ -140,7 +140,7 @@ class LoginController extends Controller
              echo "请确认您的密码后再次登录...";die;
          }
         
-        $uid = request()->input('id');
+        $uid = $res['id'];
         //生成token   写入cookie
         $token = Str::random(16);
         //将token存入redis
