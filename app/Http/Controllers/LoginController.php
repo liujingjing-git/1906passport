@@ -127,7 +127,7 @@ class LoginController extends Controller
         $password = request()->input('password');
 
         //验证
-        $res = UserModel::where(['username'=>$username])->first();
+        $res = UserModel::where(['mobile'=>$username])->orwhere(['email'=>$username])->orwhere(['username'=>$username])->first();
         if($res==null)
         {
             header("refresh:3,url=reg");
