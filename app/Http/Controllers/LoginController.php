@@ -131,7 +131,7 @@ class LoginController extends Controller
         if($res==null)
         {
             header("refresh:3,url=reg");
-            echo "该用户不存在 注册后再试...";die; 
+            echo "该用户不存在 注册后再试..";die; 
         }
          //判断密码
          $password = request()->input('password');
