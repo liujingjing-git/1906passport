@@ -85,11 +85,11 @@
                 </div>
                 <hr>
                 <div class="links">
+                    <a href="{{url('reg')}}"><img src="/1587038586(1).png" width="50px" height="50px" style="border-radius:50%;overflow:hidden;"></a>
                     <a href="https://github.com/login/oauth/authorize?client_id=85ce8a41ed8a7a2912b6&redirect_uri=http://passport.1906.com/github/callback">
                         <img src="/timg.jfif" width="50px" height="50px" style="border-radius:50%;overflow:hidden;">
                     </a>
-                    <a href="{{url('reg')}}"><img src="/tim.jfif" width="50px" height="50px" style="border-radius:50%;overflow:hidden;"></a>
-                    <a href="{{url('login')}}"><img src="/u=1500916776,3879640992&fm=26&gp=0.jpg" width="50px" height="50px" style="border-radius:50%;overflow:hidden;"></a>
+                    <a href="{{url('login')}}"><img src="/1587038897(1).png" width="50px" height="50px" style="border-radius:50%;overflow:hidden;"></a>
                 </div>
             </div>
         </div>

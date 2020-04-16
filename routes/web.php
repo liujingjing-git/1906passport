@@ -24,8 +24,6 @@ Route::post('regdo','LoginController@regdo'); //执行注册
 Route::get('login','LoginController@login'); //登陆视图
 Route::post('logindo','LoginController@logindo'); //执行登录
 
-
-
 //处理API登录
 Route::prefix('/api')->group(function(){
     Route::post('/login','LoginController@apiLogin'); 
