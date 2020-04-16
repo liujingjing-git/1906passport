@@ -104,7 +104,7 @@ class GithubController extends Controller
 
     /**个人中心 */
     public function center()
-    {
+    {   
         return view('github/center');
     }    
 }

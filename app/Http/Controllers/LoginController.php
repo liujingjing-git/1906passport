@@ -130,13 +130,13 @@ class LoginController extends Controller
         $res = UserModel::where(['mobile'=>$username])->orwhere(['email'=>$username])->orwhere(['username'=>$username])->first();
         if($res==null)
         {
-            header("refresh:3,url=reg");
+            header("refresh:3,url=api/reg");
             echo "该用户不存在 注册后再试..";die; 
         }
          //判断密码
          $password = request()->input('password');
          if (!Hash::check($password,$res['password'])) {
-             header("refresh:3,url=login");
+             header("refresh:3,url=api/login");
              echo "请确认您的密码后再次登录...";die;
          }
         
